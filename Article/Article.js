@@ -88,7 +88,7 @@ const data = [
   }
 ];
 
-/* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
+/* Step 1: Create a function that creates a component. You will want your component to look like the template below:
   
   <div class="article">
     <h2>{title of the article}</h2>
@@ -112,3 +112,63 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+// Function Start
+function newsFeed(title, date, firstParagraph, secondParagraph, thirdParagraph){
+
+  // defining the elements
+  let article = document.createElement('div');
+  article.classList.add("article")
+
+  let articleHeader = document.createElement('h2');
+  articleHeader.textContent = title;
+
+  let articleDate = document.createElement('p');
+  articleDate.textContent = date;
+  articleDate.classList.add("date")
+
+  let paragraph1 = document.createElement('p')
+  paragraph1.textContent = firstParagraph;
+
+  let paragraph2 = document.createElement('p')
+  paragraph2.textContent = secondParagraph;
+
+  let paragraph3 = document.createElement('p')
+  paragraph3.textContent = thirdParagraph;
+
+
+  article.addEventListener('click', (event) => {
+    article.classList.toggle('article-open');
+    article.classList.toggle('article-close');
+    // 2. change the visibility of content with our .toggle-on class
+
+    paragraph1.classList.toggle('toggle-on')
+    paragraph2.classList.toggle('toggle-on')
+    paragraph3.classList.toggle('toggle-on')
+  })
+  
+
+  // setting up the structure
+  article.append(articleHeader, articleDate, paragraph1, paragraph2, paragraph3);
+
+
+
+  // span.addEventListener('click', (event) =>{
+  //   event.target.
+  // })
+
+  return article;
+}
+
+container = document.createElement('div');
+document.body.append(container);
+container.classList.add('articles');
+
+data.map(data => {
+container.append(newsFeed(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph))
+})
+
+
+
+newsFeed();
+console.log(newsFeed());
