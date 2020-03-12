@@ -33,3 +33,36 @@ let menuItems = [
   Step 6: add the menu component to the DOM.
   
 */
+
+
+function hamburger(menuItems) {
+
+  menu = document.createElement('div');
+  menu.classList.add('menu')
+  let condiments = document.createElement('ul');
+
+  let button = document.querySelector(".menu-button");
+
+  menuItems.forEach(function (x){
+
+    let li = document.createElement('li')
+    li.append(x)
+
+    condiments.append(li)
+  })
+
+  button.addEventListener('click', event => {
+    console.log(menu)
+    menu.classList.toggle('menu--open');
+    document.body.append(menu)
+    menu.append(condiments);
+
+    condiments.classList.toggle('toggle-on')
+    condiments.classList.toggle('menu--open')
+  })
+
+return menu
+}
+(hamburger(menuItems));
+
+// append the shit to the shit.
